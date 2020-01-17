@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node index.js"
   },
+  "bin": {
+    "sqlcipher-cli": "index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lovelykd/sqlcipher-cli.git"
