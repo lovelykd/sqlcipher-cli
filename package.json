@@ -1,0 +1,28 @@
+{
+  "name": "sqlcipher-cli",
+  "version": "1.0.0",
+  "description": "command line utility for sqlcipher",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lovelykd/sqlcipher-cli.git"
+  },
+  "keywords": [
+    "sqlcipher",
+    "command",
+    "line"
+  ],
+  "author": "rbrkee@gmail.com",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/lovelykd/sqlcipher-cli/issues"
+  },
+  "homepage": "https://github.com/lovelykd/sqlcipher-cli#readme",
+  "dependencies": {
+    "@journeyapps/sqlcipher": "^4.0.0",
+    "commander": "^4.1.0"
+  }
+}
