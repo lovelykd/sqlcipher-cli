@@ -1,7 +1,7 @@
 {
   "name": "sqlcipher-cli",
   "version": "1.0.0",
-  "description": "command line utility for sqlcipher",
+  "description": "Command line SQLCipher client for Windows",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -15,8 +15,9 @@
   },
   "keywords": [
     "sqlcipher",
-    "command",
-    "line"
+    "command-line",
+    "client",
+    "Windows"
   ],
   "author": "rbrkee@gmail.com",
   "license": "BSD-3-Clause",

@@ -3,15 +3,15 @@
 const program =  require('commander');
 const version = require('./package.json').version;
 const sqlite3 = require('@journeyapps/sqlcipher').verbose();
-const path = require('path');
 const readline = require('readline');
 
 program.version(version)
-  .usage('sqlcipher-cli -d yourdatabase.db -s yoursecretkey')
+  .usage('sqlcipher-cli -d test.db -s secretkey')
   .requiredOption('-d, --database <database>', 'database file')
-  .requiredOption('-s, --secret <secret>', 'secret key of sqlcipher')
+  .requiredOption('-s, --secret <secret>', 'secret key for sqlcipher')
   .parse(process.argv);
 
+var lines = [];
 
 const db = new sqlite3.Database(program.database);
 db.run('PRAGMA key = "' +  program.secret + '"');
@@ -32,19 +32,27 @@ db.on('open', () => {
   r.prompt('>');
 })
 
-r.on('line', (input) => {
-  input = input.trim();
-  if (input === 'quit') {
+r.on('line', (line) => {
+  line = line.trim();
+  if (line === 'quit' && lines.length == 0) {
+    console.log('Bye');
     r.close();
   }
-  db.all(input, [], (err, rows) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(rows);
-    }
+  lines.push(line);
+  if (line.endsWith(';')) {
+    // join the lines with space character as a query string and execute it
+    db.all(lines.join(' '), [], (err, rows) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(rows);
+      }
+      lines = []
+      r.prompt('>');
+    })
+  } else {
     r.prompt('>');
-  })
+  }
 })
 
 r.on('close', () => {
