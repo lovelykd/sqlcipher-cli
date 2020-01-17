@@ -1,6 +1,6 @@
 {
   "name": "sqlcipher-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Command line SQLCipher client for Windows",
   "main": "index.js",
   "scripts": {
